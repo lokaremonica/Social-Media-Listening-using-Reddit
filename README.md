@@ -24,7 +24,8 @@ For analysis, I first performed exhaustive exploratory data analysis on the post
 
 # 2. Flow Diagram
 The flow diagram describing the set of steps involved in going from raw data to web application is shown in Figure 1.
-![](https://drive.google.com/file/d/1b3xa4LhZL8HfIrQv2edC7X_WEN_IVvlv/view?usp=drive_link)
+![Flow Diagram](https://drive.google.com/file/d/1b3xa4LhZL8HfIrQv2edC7X_WEN_IVvlv/view?usp=drive_link)
+
 
 This flow diagram outlines the process of social media listening using historical data from Reddit, specifically from the r/technology subreddit. The diagram describes a sequence of operations performed on the dataset to build a keyword-search-based dashboard for social media listening and analysis. A summary of the steps are described below:
 1. As referenced earlier, the raw data is obtained from the source and this is written to a Google Cloud Storage bucket using a batch-processing approach.

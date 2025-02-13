@@ -132,20 +132,5 @@ pip install -r requirements.txt  <br>
 streamlit run streamlit_reddit_historical.py <br>
 The app should now be accessible at http://localhost:8501/. <br>
 
-# 11. Future Enhancements
-🚀 Expand to Multiple Social Media Channels
-* Integrate Twitter (X), Instagram, YouTube, and Google Trends data.
-📊 Advanced NLP & ML Models
-* Implement transformers (BERT, GPT-4, LangChain, LLaMA) for better sentiment and trend prediction.
-🔍 Real-Time Data Streaming
-* Enhance the system to track live discussions in real time.
-🎯 Influencer & Brand Sentiment Tracking
-* Identify top influencers discussing specific topics.
-* Analyze brand sentiment over time.
-🤖 Generative AI Insights
-* Use LLMs (like OpenAI GPT) to summarize trends dynamically.
-📈 Predictive Analytics for Social Media Trends
-* Forecast consumer behavior and market trends using time-series analysis.
-
-# 12. Conclusion
+# 11. Conclusion
 This project provides a scalable social media listening solution using Reddit data, PySpark, and NLP techniques. The Streamlit dashboard enables interactive exploration of historical trends, sentiment analysis, and topic modeling. Future improvements will focus on real-time monitoring, advanced AI models, and multi-platform integration.

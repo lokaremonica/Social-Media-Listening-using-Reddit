@@ -1,0 +1,10 @@
+streamlit
+st_files_connection
+pandas
+numpy
+plotly
+textblob
+wordcloud
+matplotlib
+gcsfs
+scikit-learn

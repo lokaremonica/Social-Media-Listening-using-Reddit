@@ -60,4 +60,92 @@ Sentiment was extracted using the Python textblob library which provides a senti
 # 7.Text Cleaning
 Operations like changing the post title to lowercase, removal of English stopwords, removal of HTML tags and URLs, removal of emoji’s and non-ASCII characters were performed using PySpark. Contractions (i.e. expansions of “i’m” to “i am”) were also expanded. <br>
 
-# 8.
+# 8. Unsupervised Learning on Post Titles
+Since the dataset does not contain labeled data, I applied unsupervised learning techniques to uncover hidden patterns in the post titles. Two approaches were attempted:<br>
+
+## 8.1 K-Means Clustering
+K-Means clustering was applied to group similar Reddit post titles into clusters. The process involved:
+1. TF-IDF Vectorization: Converting text into numerical features using Term Frequency-Inverse Document Frequency (TF-IDF).
+2. Hopkins Test: Checking clustering tendency to determine if the data is suitable for clustering.
+3. Elbow Method: Identifying the optimal number of clusters.
+4. Clustering Execution: Applying K-Means clustering to assign posts into different clusters.<br>
+
+Findings:<br>
+* The Hopkins statistic was low, indicating that the data did not exhibit strong clustering tendencies.
+* The Elbow method did not yield a distinct elbow point, suggesting that distinct clusters were not present in the dataset.
+* Due to the lack of clear separation, K-Means was not effective in categorizing the Reddit post titles.<br>
+
+## 8.2 Latent Dirichlet Allocation (LDA) for Topic Modeling
+LDA, a probabilistic topic modeling technique, was used to extract latent topics from the dataset.<br>
+Process:<br>
+1. TF-IDF Vectorization: Extracting important words.
+2. Training LDA Model: Generating topics with trigrams.
+3. Visualizing Topics: Displaying keywords associated with each topic.<br>
+
+Key Topics Identified:
+* Topic 0: News around training data for AI models.
+* Topic 1: Discussions about deepfakes and AI risks.
+* Topic 2: AI-related tool launches (e.g., Google's Gemini).
+* Topic 3: Mixed discussions on AI developments.
+* Topic 4: New AI product launches and controversies. <br>
+LDA successfully extracted meaningful themes, making it a more suitable method than K-Means for analyzing post titles.<br>
+
+# 9. Streamlit Social Media Listening Dashboard
+A Streamlit-based web application was developed to visualize and analyze social media trends on Reddit using historical data.<br>
+
+## 9.1 Data Ingestion & Processing
+* The data ingestion framework was designed to read processed CSV files directly from Google Cloud Storage (GCS).
+* This ensures scalability and eliminates the need for redundant processing in the app layer.<br>
+
+##  9.2 Dashboard Features
+✔️ Keyword-based search – Users can input any keyword to track mentions in posts and comments. ✔️ Post & Comment Metrics – Aggregated reach, impressions, and sentiment analysis. ✔️ Heatmaps & Trend Charts – Visualizing post & comment trends over time. ✔️ Topic Modeling Insights – Extracting dominant themes from discussions. ✔️ Sentiment Distribution – Analyzing how sentiments fluctuate over time. ✔️ Top N-Grams – Understanding common words & phrases in discussions.<br>
+
+##  9.3 Dashboard Layout
+The dashboard is designed in five modular sections:<br>
+1. Keyword Input & Data Loading<br>
+    * Users input specific keywords to analyze.
+    * Data is dynamically loaded from Google Cloud Storage.
+2. Aggregate Metrics<br>
+    * Total Posts & Comments mentioning the keyword.
+    * Share of Voice & Reach percentages.
+    * Overall Sentiment Breakdown.
+3. Post & Comment Trends<br>
+    * Heatmaps & Area Charts visualize volume trends.
+4. Topic & Sentiment Analysis<br>
+    * LDA Topic Modeling results.
+    * Sentiment Analysis Distribution.
+5. N-Gram Analysis<br>
+    * Word Frequency trends for Unigrams, Bigrams, and Trigrams.
+## 9.4 Live Dashboard <br>
+🌐 Try it here: https://reddit-historical-listening.streamlit.app/<br>
+
+# 10. Deployment and Setup <br>
+To run this project locally, follow these steps:<br>
+## 10.1 Prerequisites
+✔️ Install Python 3.9+ ✔️ Install Streamlit, PySpark, Pandas, NumPy, and TextBlob <br>
+## 10.2 Installation
+Clone the repository and install dependencies:
+git clone https://github.com/lokaremonica/Social-Media-Listening-using-Reddit.git
+cd Social-Media-Listening-using-Reddit
+pip install -r requirements.txt  <br>
+##  10.3 Running the Streamlit App <br>
+streamlit run streamlit_reddit_historical.py <br>
+The app should now be accessible at http://localhost:8501/. <br>
+
+# 11. Future Enhancements
+🚀 Expand to Multiple Social Media Channels
+* Integrate Twitter (X), Instagram, YouTube, and Google Trends data.
+📊 Advanced NLP & ML Models
+* Implement transformers (BERT, GPT-4, LangChain, LLaMA) for better sentiment and trend prediction.
+🔍 Real-Time Data Streaming
+* Enhance the system to track live discussions in real time.
+🎯 Influencer & Brand Sentiment Tracking
+* Identify top influencers discussing specific topics.
+* Analyze brand sentiment over time.
+🤖 Generative AI Insights
+* Use LLMs (like OpenAI GPT) to summarize trends dynamically.
+📈 Predictive Analytics for Social Media Trends
+* Forecast consumer behavior and market trends using time-series analysis.
+
+# 12. Conclusion
+This project provides a scalable social media listening solution using Reddit data, PySpark, and NLP techniques. The Streamlit dashboard enables interactive exploration of historical trends, sentiment analysis, and topic modeling. Future improvements will focus on real-time monitoring, advanced AI models, and multi-platform integration.
